@@ -1,0 +1,19 @@
+
+<div>
+  <label>Search by Hotel Name</label>&nbsp;<input [(ngModel)]="search" (ngModelChange)="onChange($event)" />  
+</div>
+<br>
+<div>
+  <label>Page Number</label>&nbsp;<input [(ngModel)]="page" (ngModelChange)="onChangePage($event)" /> 
+</div>
+<br>
+<ul>
+  <li *ngFor="let hotel of filtered_hotel">
+    {{hotel?.name}}
+  </li>
+
+</ul>
+
+<div>
+  {{message}}
+</div>
