@@ -1,27 +1,46 @@
-# AngularScratch
+--hotel.data.service; grab api data from database; import HTTP client in order to use (need to import in app module as well; import forms module as well to use forms).  Note, API is a JSON service that can only hold 30 objects. For 50 objects, please host local server using my JSON database, and replace url with local host.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
-## Development server
+--app.component.html
+  --nbsp to put space; ngModel to bind the variables to the values of the input boxes. 
+  --Used [(ngModel)]="search" (ngModelChange)="onChange($event)"
+  But (ngModel) = “search” can replace first half; redundant to be sure.
+  --ngFor to loop over filtered hotels array and render.
+  --ngOnModelChange pairs with ngModel; event listeners; when text entered into input, fires callback functions onChange and onChangePage, passing value of input box.
+  --{{message}} displays message variable string.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+--app.component.ts; 
+	--lines 10-15 initialize variables
+	--import HotelDataService, use in constructor.
+	--17-22 set hotels to array of objects from json database using method from service.
+	
+  
+--onChange. Sets search to value of search input box.
+	--sets filtered hotel to return value of filtered function (will cover return value later).
+	--sets conditional rendering: if filtered_hotel array length is less than 1, then return the error message (if not filtered hotel exist), mimic 404 error result api call.
+	--fires its message when inputting into search box.
+	
+  
+--onChangePage. Converts value of page input box fired by onChangePage into number and sets to page variable.
+    --sets filtered hotel to return value of filtered function (will cover return value later).
+    ----sets conditional rendering: if filtered_hotels array length is less than 1, then return the error message. 
+    --fires its message when page numbers is being modified, to give responsive feedback.
+	
+  
+--getFiltered. Sets page size hard coded to 3; can adjust for different page sizes, can set up this as an additional event handled box in rendered ui if wanted.
+    --sets results as equal to hotel array (total database) filtered to an array of objects for which the search result lower case is included in the name     property lower case. (search is set by input in the input box).
+    --start and end help slice results as defined above to display the Page Size number of elements (hard coded here to 3). 
+    --(page number of 1 would be start end 0-3 ending not inclusive; page number 2 would be 3-6; etc).
+    --return the sliced 3 filtered elements (again adjustable based on page number) 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+Overall
+--Filteredresults is an array that is looped over in li. getFiltered sets filteredresults, and getFiltered is called every time onChange or onChangepage is fired by input in search or page box. Therefore, what is displayed changes every time some result is inputted into search or page box.  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+--appModule TS
+	--imported forms module and httpclient module to use forms and api call.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+--all other files and code default angular files.
