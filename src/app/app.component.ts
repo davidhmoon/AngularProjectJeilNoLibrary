@@ -37,7 +37,7 @@ export class AppComponent {
     this.page = Number(event);
     this.filtered_hotel = this.getFiltered();
     if (this.filtered_hotel.length < 1)
-      this.message = "No Such Page Entry";
+      this.message = "Error 404: No Search Results";
     else
       this.message = "";
   }
