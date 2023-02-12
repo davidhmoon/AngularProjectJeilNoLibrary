@@ -38,7 +38,8 @@
 Overall
 --Filteredresults is an array that is looped over in li. getFiltered sets filteredresults, and getFiltered is called every time onChange or onChangepage is fired by input in search or page box. Therefore, what is displayed changes every time some result is inputted into search or page box.  
 
-
+--Styles CSS;
+	--applied global style for responsive design with flexbox and vh to adjust for desktop and mobile.
 --appModule TS
 	--imported forms module and httpclient module to use forms and api call.
 
