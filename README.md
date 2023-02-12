@@ -1,4 +1,4 @@
---hotel.data.service; grab api data from database; import HTTP client in order to use (need to import in app module as well; import forms module as well to use forms).  Note, API is a JSON service that can only hold 30 objects. For 50 objects, please host local server using my JSON database, and replace url with local host.
+--hotel.data.service; grab api data from database; import HTTPClient in order to use API (need to import in app module as well; import forms module as well to use forms).  Note, API is a JSON service that can only hold 30 objects. For 50 objects, please host local server using my JSON database, and replace url with local host.
 
 
 --app.component.html
@@ -25,10 +25,10 @@
 --onChangePage. Converts value of page input box fired by onChangePage into number and sets to page variable.
     --sets filtered hotel to return value of filtered function (will cover return value later).
     ----sets conditional rendering: if filtered_hotels array length is less than 1, then return the error message. 
-    --fires its message when page numbers is being modified, to give responsive feedback.
+    --fires its message when page numbers is being modified.
 	
   
---getFiltered. Sets page size hard coded to 3; can adjust for different page sizes, can set up this as an additional event handled box in rendered ui if wanted.
+--getFiltered. Sets page size hard coded to 3; can adjust for different page sizes.
     --sets results as equal to hotel array (total database) filtered to an array of objects for which the search result lower case is included in the name     property lower case. (search is set by input in the input box).
     --start and end help slice results as defined above to display the Page Size number of elements (hard coded here to 3). 
     --(page number of 1 would be start end 0-3 ending not inclusive; page number 2 would be 3-6; etc).
